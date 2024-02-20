@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+{% load get_item %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfriCast</title>
+    <link rel="stylesheet" href="{% static 'style.css' %} "/>
+</head>
+<body>
+<div class="main-container">
+    <div class="intro-container">
+        <h3>Welcome to AfriCast</h3>
+    </div>
+
+    <div class="aggregated-news">
+        {% for article in articles %}
+            <div class="article">
+                <h4>Source: <a href="{{article.source}}">{{article.source}}</a></h4>
+
+                <div class="results">
+
+                {% for story in article.news %}
+
+                    <a href="{{article.links|get_item:forloop.counter0}}" class="news-link">
+                        <p class="news-title">{{story}}</p>
+                    </a>
+                    {% comment %}{% if article.images|get_item:forloop.counter0 != "image not found" %}
+                        <img src="{{article.images|get_item:forloop.counter0}}"/>
+                    {%endif%}{%endcomment%}
+                {% endfor %}
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
