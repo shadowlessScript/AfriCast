@@ -37,7 +37,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    border-bottom: 1px solid #560bad;
+    border-bottom: 1px solid #e5e5e5;
     padding-bottom: 1.5em;
 }
 
@@ -51,7 +51,7 @@ body{
     color: black;
     padding: 10px 20px;
     border-radius: 0.3rem;
-    border-bottom: 2px solid transparent;
+    border: 1px solid #3a86ff;
     margin: 10px;
     background: none;
     transition: 1s;
@@ -59,11 +59,17 @@ body{
 
 
 .cat-link:hover{
-    border-bottom-color: black;
-    transition: 1s;
+    color: #fff;
+    background: #3a86ff;
+    border: 1px solid #fff;
+    transition: .5s;
 }
 
-
+.home-link{
+    text-decoration: none;
+    color: black;
+    weight: 700;
+}
 
 .logo{
      display: flex;

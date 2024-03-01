@@ -31,8 +31,12 @@ def category_crawler(url, category):
         else:
             url += f"/{category}"
     else:
-        if url == "https://nairobiwire.com" or url == "https://newstrends.co.ke":
-            url += "/category/entertainment"
+        if url == "https://nairobiwire.com":
+            url += f"/category/{category}"
+        elif url == "https://www.the-star.co.ke":
+            url += "/sasa/entertainment/"
+        elif url == "https://nation.africa/kenya":
+            url += "/life-and-style/culture"
         else:
             url += f"/{category}"
 
@@ -63,7 +67,8 @@ def category_crawler(url, category):
             counter = 0
 
             for article in articles:
-                repo["news"] = list(OrderedDict.fromkeys(repo["news"]))
+                repo["news"] = list(OrderedDict.fromkeys(repo["news"])) # removing duplicates, without changing the
+                # values index
                 repo["links"] = list(OrderedDict.fromkeys(repo["links"]))
                 if counter < 10:  # limiting the news headlines to only 10 per website.
 
@@ -87,7 +92,8 @@ def category_crawler(url, category):
                         # href="/tech/new-tech></a>"
                         repo["links"].append(news_links["href"])
                     else:
-                        if url == "https://nation.africa/kenya/sports":
+                        if (url == "https://nation.africa/kenya/sports"
+                                or url == "https://nation.africa/kenya/life-and-style/culture"):
                             url = "https://nation.africa"
                         url_temp = url.split("/")  # ["https:","","domain-name"] -> https://domain-name
                         news_links_temp = news_links["href"].split(
@@ -95,7 +101,8 @@ def category_crawler(url, category):
 
                         # Check if the last element of 'url_temp' matches the second element of 'news_links_temp'
 
-                        if url_temp[len(url_temp) - 1] == news_links_temp[1] or url_temp[len(url_temp) - 2:] == news_links_temp[1:3]:
+                        if (url_temp[len(url_temp) - 1] == news_links_temp[1]
+                                or url_temp[len(url_temp) - 2:] == news_links_temp[1:3]):
                             # The website 'www.nation.africa/kenya' starts its paths with '/kenya/some-story'. If these
                             # paths are combined, it results in 'www.nation.africa/kenya/kenya/some-story' which gives a
                             # 404 response. To avoid this, the last element from 'url_temp', which is "kenya", is removed.
@@ -129,6 +136,6 @@ def category_crawler(url, category):
             cat_article_list.append(repo)
 
 
-def start_category_crawler( category):
+def start_category_crawler(category):
     for url in url_list:
         category_crawler(url, category)

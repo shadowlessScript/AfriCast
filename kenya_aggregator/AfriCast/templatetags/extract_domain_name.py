@@ -16,7 +16,7 @@ def extract_domain_name(url):
         if len(domain_parts) > 1:
             domain = domain_parts[0]  # Extracting the second-to-last part
             if domain == "nation":
-                domain = "nation africa"
+                domain = "nation Africa"
         return domain.capitalize()
     else:
         return None
