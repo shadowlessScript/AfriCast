@@ -5,7 +5,10 @@
 }
 
 body{
-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-color: #f8f9fa;
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .main-container{
@@ -13,38 +16,121 @@ background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     flex-direction: column;
     justify-content: center;
     align-content: center;
-}
-
-.aggregated-news{
-    display: flex;
-    justify-content: center;
-    /**align-content: center;*/
+    backdrop-filter: blur(5px);
     flex-wrap: wrap;
 }
 
+.aggregated-news{
+    /**display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;*/
+    width: 90%;
+    columns: 3;
+    column-gap: -10px;
+    padding: 10px;
+}
+
+.intro-container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #560bad;
+    padding-bottom: 1.5em;
+}
 
 .intro-container > h3{
     text-align: center;
+
+}
+
+.cat-link{
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 0.3rem;
+    border-bottom: 2px solid transparent;
+    margin: 10px;
+    background: none;
+    transition: 1s;
+}
+
+
+.cat-link:hover{
+    border-bottom-color: black;
+    transition: 1s;
+}
+
+
+
+.logo{
+     display: flex;
+}
+
+.logo > h3{
+    padding-top: 40px;
+}
+.categories{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    padding-top: 40px;
+    list-style: none;
 }
 
 .article{
-    background-color: white;
-    width: 500px;
-    margin: 20px;
+    /**background-color: #d4a373;*/
+    width: 90%;
+    margin: 10px;
     border-radius: 0.3rem;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    padding: 0.5rem;
+    padding: 1rem;
     height: fit-content;
+    break-inside: avoid;
+
 }
 
 .news-link{
     text-decoration: none;
     color: black;
+    margin-bottom: 2.5px;
 }
 
 .news-title{
     margin: 5px;
-    text-decoration: underline;
+    /**text-decoration: underline;*/
     padding: 2px;
-    /**border: 1px dashed black;*/
+    border-bottom: 1px dashed grey;
+    transition: 0.2s;
+
+}
+
+.source-link{
+    text-decoration: none;
+    color: grey;
+    font-style: italic;
+    cursor: pointer;
+}
+
+
+.news-title:hover{
+    color: #219ebc;
+    transition: 0.2s;
+}
+
+.title-link{
+    text-decoration: none;
+    color: #3a86ff;
+    font-weight: 700;
+
+}
+.title{
+    text-align: center;
+}
+@media (max-width: 1000px){
+    .aggregated-news{
+        columns: 2;
+    }
 }

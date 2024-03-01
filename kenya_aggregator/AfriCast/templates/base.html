@@ -1,37 +1,68 @@
 <!DOCTYPE html>
 {% load static %}
 {% load get_item %}
+{% load extract_domain_name %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AfriCast</title>
     <link rel="stylesheet" href="{% static 'style.css' %} "/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Kode+Mono:wght@400..700&family=Lobster&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+<!--        body{-->
+<!--            background-image: url("{% static 'images/africast-bg.jpg' %}");-->
+
+<!--            /* Full height */-->
+
+<!--            /* Center and scale the image nicely */-->
+<!--            background-position: center;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-size: cover;-->
+<!--        }-->
+    </style>
 </head>
 <body>
+<nav class="intro-container">
+        <div class = "logo">
+            <img width="90px" height="90px" src="{% static 'images/icon-africast.png' %}"/>
+            <h3><a href="{% url 'home' %}">Nairobi Cryer</a></h3>
+        </div>
+
+        <ul class="categories">
+            <li><a href="{% url 'category' 'business' %}" class="cat-link">Business</a></li>
+            <li><a href="{% url 'category' 'sports' %}" class="cat-link">Sports</a></li>
+            <li><a href="{% url 'category' 'politics' %}" class="cat-link">Politics</a></li>
+            <li><a href="{% url 'category' 'entertainment' %}" class="cat-link">Entertainment</a></li>
+        </ul>
+</nav>
 <div class="main-container">
-    <div class="intro-container">
-        <h3>Welcome to AfriCast</h3>
-    </div>
 
     <div class="aggregated-news">
         {% for article in articles %}
             <div class="article">
-                <h4>Source: <a href="{{article.source}}">{{article.source}}</a></h4>
-
+                <h4 class="title">
+                    <a class="title-link" href="{{article.source}}">{{ article.source|extract_domain_name }}</a>
+                </h4>
                 <div class="results">
 
-                {% for story in article.news %}
+                    {% for story in article.news %}
 
-                    <a href="{{article.links|get_item:forloop.counter0}}" class="news-link">
-                        <p class="news-title">{{story}}</p>
-                    </a>
-                    {% comment %}{% if article.images|get_item:forloop.counter0 != "image not found" %}
-                        <img src="{{article.images|get_item:forloop.counter0}}"/>
-                    {%endif%}{%endcomment%}
-                {% endfor %}
+                        <a href="{{article.links|get_item:forloop.counter0}}" class="news-link">
+                            <p class="news-title">{{story|truncatewords:10}}</p>
+                        </a>
+                        {% comment %}{% if article.images|get_item:forloop.counter0 != "image not found" %}
+                            <img src="{{article.images|get_item:forloop.counter0}}"/>
+                        {%endif%}{%endcomment%}
+                    {% endfor %}
 
                 </div>
+
+                <h4 class="source-title">
+                    By: <a class="source-link" href="{{article.source}}">{{article.source}}</a>
+                </h4>
             </div>
         {% endfor %}
     </div>
