@@ -7,7 +7,7 @@ It is a content aggregator, built on Django and utilizes Requests and BeautifulS
  - Can aggregate specific categories such as politics, entertainment, sports, and business.
 
 # How does it work?
-Nairobi Cryer sends a get request to a website and then get its HTML.
+Nairobi Cryer sends a get request to a website and then beautifulSoup parses the received HTML.
 The program looks for tags with news headlines such as article or div or h3 tags, after it extracts its text, news headline link and also its thumbnail(currently deactivated).
 Once all the previously saved websites' info has been processed and collected, it's sent to Django views and then displayed in an HTML template.
 
