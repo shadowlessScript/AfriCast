@@ -1,5 +1,5 @@
 # What is Nairobi Cryer?
-It is a content aggregator, built on Django and cleavages Requests and BeautifulSoup4 libraries for its web scraper algorithm, that aggregates news headlines and their respective links from different Kenyan news websites.
+It is a content aggregator, built on Django and utilizes Requests and BeautifulSoup4 libraries for its web scraper algorithm, that aggregates news headlines and their respective links from different Kenyan news websites.
 
 # Features
  - Aggregates news headlines from various Kenyan news websites.
