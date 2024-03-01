@@ -24,7 +24,7 @@ To install Nairobi Cryer follow these steps:
     ```commandline
    python -m venv <env name>   
    ```
-   - activate the virtual environment for CMD, (you use backslash or forward slash for Windows powershell)
+   - activate the virtual environment for CMD, (use backslash or forward slash for Windows powershell)
      ```commandline
       .\<env name>\Scripts\activate
         ```
@@ -51,4 +51,4 @@ To install Nairobi Cryer follow these steps:
 [@shadowlessScript](https://github.com/shadowlessScript)
 
 # License
-[GNU license](LICENSE)
+[GPL license](LICENSE)
