@@ -43,6 +43,10 @@ To install Nairobi Cryer follow these steps:
    ```commandline
    python manage.py runserver
    ```
+    ### Result
+   <img src="./Homepage.png" alt="Home page" title="Nairobi Cryer Home Page"/>
+            
+
 # Author
 [@shadowlessScript](https://github.com/shadowlessScript)
 
