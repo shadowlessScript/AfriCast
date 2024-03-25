@@ -110,7 +110,7 @@ def start_crawler():
     for url in url_list:
         scrape_website(url)
 
-    trending()
+    # trending()
 
 
 def trending():
